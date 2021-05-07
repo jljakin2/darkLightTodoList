@@ -7,11 +7,24 @@ const MainContainer = styled.div`
   width: 100%;
 `;
 
-const Todo = ({ handleAddItem, todoList }) => {
+const Todo = ({
+  handleAddItem,
+  todoList,
+  handleChecked,
+  handleRemoveCompleted,
+  filter,
+  handleFilter,
+}) => {
   return (
     <MainContainer>
       <TodoCreate handleAddItem={handleAddItem} />
-      <TodoList todoList={todoList} />
+      <TodoList
+        todoList={todoList}
+        handleChecked={handleChecked}
+        handleRemoveCompleted={handleRemoveCompleted}
+        filter={filter}
+        handleFilter={handleFilter}
+      />
     </MainContainer>
   );
 };

@@ -17,14 +17,52 @@ const MainContainer = styled.div`
 `;
 
 class App extends React.Component {
-  state = { todoList: [], isDarkTheme: false };
+  state = { todoList: [], isDarkTheme: false, filter: "All" };
 
   handleAddItem = item => {
-    this.setState({ todoList: [...this.state.todoList, item] });
+    this.setState({
+      todoList: [
+        ...this.state.todoList,
+        { id: new Date().getTime(), item, isChecked: false },
+      ],
+    });
   };
 
   handleThemeChange = () => {
     this.setState({ isDarkTheme: !this.state.isDarkTheme });
+  };
+
+  handleChecked = clickedId => {
+    /**
+     * Method that takes existing todoList array and finds the item that was
+     * clicked. Then it changes the state of the item to reflect the fact that it
+     * was completed. Finally, it replaces the current version of the item with the
+     * updated version and then we update the entire state of todoList.
+     */
+    const newArray = [...this.state.todoList];
+    const checkedItem = newArray.find(element => element.id === clickedId);
+    checkedItem.isChecked = !checkedItem.isChecked;
+    const index = newArray.indexOf(checkedItem);
+    newArray[index] = checkedItem;
+
+    this.setState({ todoList: newArray });
+  };
+
+  handleRemoveCompleted = () => {
+    const newArray = [...this.state.todoList];
+    const onlyOpen = newArray.filter(item => item.isChecked === false);
+
+    this.setState({ todoList: onlyOpen });
+  };
+
+  handleFilter = clickedItem => {
+    if (clickedItem === "All") {
+      this.setState({ filter: "All" });
+    } else if (clickedItem === "Active") {
+      this.setState({ filter: "Active" });
+    } else if (clickedItem === "Completed") {
+      this.setState({ filter: "Completed" });
+    }
   };
 
   render() {
@@ -39,6 +77,10 @@ class App extends React.Component {
           <TodoContainer
             handleAddItem={this.handleAddItem}
             todoList={this.state.todoList}
+            handleChecked={this.handleChecked}
+            handleRemoveCompleted={this.handleRemoveCompleted}
+            filter={this.state.filter}
+            handleFilter={this.handleFilter}
           />
           <Footer text="Drag and drop to reorder list" />
         </MainContainer>
