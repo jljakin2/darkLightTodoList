@@ -34,6 +34,7 @@ const Form = styled.form`
   & input {
     background: none;
     border: none;
+    caret-color: ${({ theme }) => theme.primary};
 
     font-size: 1.125rem;
     color: ${({ theme }) => theme.createTodo};

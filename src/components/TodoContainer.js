@@ -5,6 +5,8 @@ import TodoList from "./TodoList";
 
 const MainContainer = styled.div`
   width: 100%;
+
+  z-index: 1;
 `;
 
 const Todo = ({
@@ -14,6 +16,7 @@ const Todo = ({
   handleRemoveCompleted,
   filter,
   handleFilter,
+  handleDelete,
 }) => {
   return (
     <MainContainer>
@@ -24,6 +27,7 @@ const Todo = ({
         handleRemoveCompleted={handleRemoveCompleted}
         filter={filter}
         handleFilter={handleFilter}
+        handleDelete={handleDelete}
       />
     </MainContainer>
   );

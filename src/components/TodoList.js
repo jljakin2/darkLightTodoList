@@ -13,6 +13,8 @@ const MainContainer = styled.div`
 
   transition: all 0.2s ease-in-out;
   cursor: default;
+
+  z-index: 1;
 `;
 
 const List = styled.div`
@@ -41,51 +43,46 @@ const TodoList = ({
   handleRemoveCompleted,
   handleFilter,
   filter,
+  handleDelete,
 }) => {
   const getRenderedListItems = filterType => {
     /**
      * Function that takes the type of filter that the user clicks on and renders the todo list items
      * that match the filterType.
      */
+
+    const todoListComponent = todoItem => {
+      return (
+        <TodoListItem
+          id={todoItem.id}
+          item={todoItem.item}
+          isChecked={todoItem.isChecked}
+          handleChecked={handleChecked}
+          handleDelete={handleDelete}></TodoListItem>
+      );
+    };
+
     if (todoList.length === 0) {
       return (
         <EmptyStateContainer>
           <EmptyStateText>
-            There are currently no items in your list. Do work, son!
+            You don't have any items in your list. Do work, son!
           </EmptyStateText>
         </EmptyStateContainer>
       );
     } else if (filterType === "All" && todoList.length > 0) {
       return todoList.map(item => {
-        return (
-          <TodoListItem
-            id={item.id}
-            item={item.item}
-            isChecked={item.isChecked}
-            handleChecked={handleChecked}></TodoListItem>
-        );
+        return todoListComponent(item);
       });
     } else if (filterType === "Active") {
       const onlyActive = todoList.filter(item => item.isChecked === false);
       return onlyActive.map(item => {
-        return (
-          <TodoListItem
-            id={item.id}
-            item={item.item}
-            isChecked={item.isChecked}
-            handleChecked={handleChecked}></TodoListItem>
-        );
+        return todoListComponent(item);
       });
     } else if (filterType === "Completed") {
       const onlyCompleted = todoList.filter(item => item.isChecked === true);
       return onlyCompleted.map(item => {
-        return (
-          <TodoListItem
-            id={item.id}
-            item={item.item}
-            isChecked={item.isChecked}
-            handleChecked={handleChecked}></TodoListItem>
-        );
+        return todoListComponent(item);
       });
     }
   };

@@ -51,7 +51,11 @@ const ListFooter = ({
 
   return (
     <MainContainer>
-      <Count>{getOpenTodoItemsLength()} items left</Count>
+      <Count>
+        {getOpenTodoItemsLength() +
+          `${getOpenTodoItemsLength() === 1 ? " item " : " items "}`}
+        left
+      </Count>
       <CategoryContainer>
         <p
           style={filter === "All" ? { color: "#3A7CFD" } : {}}

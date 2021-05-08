@@ -7,10 +7,15 @@ const CircleEmpty = styled.div`
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: 50%;
   cursor: pointer;
+  position: relative;
 
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1.5rem;
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.primary};
+  }
 `;
 
 const CircleFull = styled.div`
@@ -37,16 +42,16 @@ const Check = styled.img`
   height: 0.5rem;
 `;
 
-const CheckCircle = ({ isChecked }) => {
+const CheckCircle = ({ isChecked, handleChecked, id }) => {
   const renderContent = () => {
     if (isChecked) {
       return (
-        <CircleFull>
+        <CircleFull onClick={() => handleChecked(id)}>
           <Check src={check} alt="check" />
         </CircleFull>
       );
     } else {
-      return <CircleEmpty />;
+      return <CircleEmpty onClick={() => handleChecked(id)} />;
     }
   };
 

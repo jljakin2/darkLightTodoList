@@ -48,6 +48,13 @@ class App extends React.Component {
     this.setState({ todoList: newArray });
   };
 
+  handleDelete = itemId => {
+    const newArr = [...this.state.todoList];
+    const filterArr = newArr.filter(item => item.id !== itemId);
+
+    this.setState({ todoList: filterArr });
+  };
+
   handleRemoveCompleted = () => {
     const newArray = [...this.state.todoList];
     const onlyOpen = newArray.filter(item => item.isChecked === false);
@@ -81,6 +88,7 @@ class App extends React.Component {
             handleRemoveCompleted={this.handleRemoveCompleted}
             filter={this.state.filter}
             handleFilter={this.handleFilter}
+            handleDelete={this.handleDelete}
           />
           <Footer text="Drag and drop to reorder list" />
         </MainContainer>
