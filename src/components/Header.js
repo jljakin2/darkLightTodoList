@@ -18,6 +18,10 @@ const Text = styled.h1`
   letter-spacing: 0.9375rem;
   text-transform: uppercase;
   font-weight: ${({ theme }) => theme.regular};
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Icon = styled.img`
@@ -25,6 +29,11 @@ const Icon = styled.img`
 
   width: 1.625rem;
   height: 1.625rem;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 `;
 
 const Header = ({ isDarkTheme, handleThemeChange }) => {

@@ -24,10 +24,18 @@ const CategoryContainer = styled.div`
   & p:not(:last-child) {
     margin-right: 1.25rem;
   }
+
+  @media only screen and (max-width: 37.5em) {
+    display: none;
+  }
 `;
 
 const Count = styled.p`
   cursor: default;
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 0.75rem;
+  }
 `;
 
 const Clear = styled.p`
@@ -35,6 +43,10 @@ const Clear = styled.p`
 
   &:hover {
     color: ${({ theme }) => theme.subtextHover};
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 0.75rem;
   }
 `;
 
@@ -52,6 +64,7 @@ const ListFooter = ({
   return (
     <MainContainer>
       <Count>
+        {/* checks to ensure correct singular vs. plural version is used */}
         {getOpenTodoItemsLength() +
           `${getOpenTodoItemsLength() === 1 ? " item " : " items "}`}
         left

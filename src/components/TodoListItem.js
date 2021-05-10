@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import CheckCircle from "./CheckCircle";
 
 import close from "../images/icon-cross.svg";
@@ -18,6 +19,10 @@ const MainContainer = styled.div`
   &:hover img {
     visibility: visible;
   }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 1rem 1.25rem;
+  }
 `;
 
 const Item = styled.p`
@@ -26,6 +31,10 @@ const Item = styled.p`
   letter-spacing: -0.015625rem;
 
   flex: 1;
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 0.75rem;
+  }
 `;
 
 const ItemChecked = styled.p`
@@ -41,6 +50,13 @@ const Close = styled.img`
   visibility: hidden;
 
   z-index: 100;
+
+  @media only screen and (max-width: 37.5em) {
+    visibility: visible;
+
+    width: 0.75rem;
+    height: 0.75rem;
+  }
 `;
 
 class ListItem extends React.Component {
@@ -55,7 +71,7 @@ class ListItem extends React.Component {
   render() {
     const { item, isChecked, id, handleChecked } = this.props;
     return (
-      <MainContainer key={id}>
+      <MainContainer>
         <CheckCircle
           isChecked={isChecked}
           id={id}

@@ -5,7 +5,6 @@ const FooterText = styled.p`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.footerText};
   letter-spacing: -0.011875rem;
-  /* border-top: */
 
   margin-bottom: 3.125rem;
 `;

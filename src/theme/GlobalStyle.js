@@ -36,6 +36,12 @@ body {
   padding: 4.375rem 3rem 0rem 3rem;
 
   transition: all 0.2s ease-in-out;
+
+  @media only screen and (max-width: 37.5em) {
+      background-image: url(${({ theme }) => theme.backgroundImageMobile});
+
+      padding: 3rem 1.5rem 0rem 1.5rem;
+  }
 }
 
 `;

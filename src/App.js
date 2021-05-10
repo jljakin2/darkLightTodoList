@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
+
 import Header from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
 import Footer from "./components/Footer";
@@ -14,12 +15,19 @@ const MainContainer = styled.div`
   align-items: center;
 
   width: 33.75rem;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 100%;
+  }
 `;
 
 class App extends React.Component {
   state = { todoList: [], isDarkTheme: false, filter: "All" };
 
   handleAddItem = item => {
+    /**
+     * Method that takes the existing todoList state and adds a new item
+     */
     this.setState({
       todoList: [
         ...this.state.todoList,
@@ -49,6 +57,10 @@ class App extends React.Component {
   };
 
   handleDelete = itemId => {
+    /**
+     * Method that filters out the item that the user clicked on, then updates the state of the
+     * "todoList" with the filtered array
+     */
     const newArr = [...this.state.todoList];
     const filterArr = newArr.filter(item => item.id !== itemId);
 
@@ -56,6 +68,9 @@ class App extends React.Component {
   };
 
   handleRemoveCompleted = () => {
+    /**
+     * Method that filters out the items of the "todoList" that have been checked.
+     */
     const newArray = [...this.state.todoList];
     const onlyOpen = newArray.filter(item => item.isChecked === false);
 
@@ -63,6 +78,9 @@ class App extends React.Component {
   };
 
   handleFilter = clickedItem => {
+    /**
+     * Method that sets the state of "filter" depending on which filter option the user clicked on
+     */
     if (clickedItem === "All") {
       this.setState({ filter: "All" });
     } else if (clickedItem === "Active") {

@@ -13,6 +13,10 @@ const MainContainer = styled.div`
   margin-bottom: 1.5rem;
 
   transition: all 0.2s ease-in-out;
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 1rem 1.25rem;
+  }
 `;
 
 const Circle = styled.div`
@@ -24,6 +28,11 @@ const Circle = styled.div`
   margin-right: 1.5rem;
 
   transition: all 0.2s ease-in-out;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 `;
 
 const Form = styled.form`
@@ -44,12 +53,20 @@ const Form = styled.form`
 
     transition: all 0.2s ease-in-out;
 
+    @media only screen and (max-width: 37.5em) {
+      font-size: 0.75rem;
+    }
+
     &::placeholder {
       color: ${({ theme }) => theme.createTodo};
       font-size: 1.125rem;
       letter-spacing: -0.015625rem;
 
       transition: all 0.2s ease-in-out;
+
+      @media only screen and (max-width: 37.5em) {
+        font-size: 0.75rem;
+      }
     }
 
     &:focus {
@@ -62,10 +79,15 @@ class TodoCreate extends React.Component {
   state = { item: "" };
 
   onInputChange = e => {
+    // gets input from user and updates state to track what the user is typing
     this.setState({ item: e.target.value });
   };
 
   onFormSubmit = e => {
+    /**
+     * Function that takes what the user has typed passes it to the function in App.js that adds
+     * the item to the "todoList" state array
+     */
     e.preventDefault();
 
     this.props.handleAddItem(this.state.item);

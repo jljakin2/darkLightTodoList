@@ -16,6 +16,11 @@ const CircleEmpty = styled.div`
   &:hover {
     border: 1px solid ${({ theme }) => theme.primary};
   }
+
+  @media only screen and (max-width: 37.5em) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 `;
 
 const CircleFull = styled.div`
@@ -35,11 +40,21 @@ const CircleFull = styled.div`
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1.5rem;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 `;
 
 const Check = styled.img`
   width: 0.5rem;
   height: 0.5rem;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
 `;
 
 const CheckCircle = ({ isChecked, handleChecked, id }) => {
