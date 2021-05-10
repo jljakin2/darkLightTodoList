@@ -28,11 +28,11 @@ Users should be able to:
 
 ### Screenshot
 
-![Screenshot](./screenshot.jpg)
+![Screenshot](./src/images/screenshot.png)
 
 ### Links
 
-- Live Site URL: [link](https://your-live-site-url.com)
+- Live Site URL: [link](https://dark-light-todo-list.vercel.app/)
 
 ## My process
 
