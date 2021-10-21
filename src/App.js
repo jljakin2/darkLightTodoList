@@ -108,7 +108,7 @@ class App extends React.Component {
             handleFilter={this.handleFilter}
             handleDelete={this.handleDelete}
           />
-          <Footer text="Drag and drop to reorder list" />
+          {/* <Footer text="Drag and drop to reorder list" /> */}
         </MainContainer>
       </ThemeProvider>
     );
